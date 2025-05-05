@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/10517a44b1.js" crossorigin="anonymous"></script>
     <title>Bubsify</title>
 </head>
 <body>
@@ -12,9 +13,18 @@
         <div class="music-player">
             <img src="songs/loveyou.jpg" class="song-img">
             <h3 class="song-title">Love You / Capchii feat. Hatsune Miku</h3>
+
             <audio controls>
                 <source src="songs/Love You ⧸ Capchii feat. 初音ミク [i1umA0qoLa4].mp3" type="audio/mpeg">
             </audio>
+
+            <div class="controls">
+                <div><i class="fa-solid fa-backward-step"></i></div>
+                <div><i class="fa-solid fa-play"></i></div>
+                <div><i class="fa-solid fa-forward-step"></i></div>
+            </div>
+
+            <input type="range" value="0" id="progress">
         </div>
     </div>
 </body>
