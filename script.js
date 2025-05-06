@@ -9,6 +9,7 @@ const backwardBtn = document.querySelector("#backward");
 const backwardDiv = document.querySelector("#backward-container");
 const mikuIcon = document.querySelector("#mikuIcon");
 const caseIcon = document.querySelector("#caseIcon");
+const songImg = document.querySelector("#song-img");
 
 //This is gonna be really rough
 const miku = [
@@ -31,7 +32,6 @@ const miku = [
     "songs/miku/Miku hatsune story rider (with lyrics) [QGhhs8xwxc8].mp3"
 ];
 
-//Man these lists are ugly
 const caseStudy = [
     "songs/caseStudy/ARE YOU OK？ [Bqh1krcUf6Q].mp3",
     "songs/caseStudy/COMPLEXITIES [bDDtP_03GM0].mp3",
@@ -43,6 +43,28 @@ const caseStudy = [
     "songs/caseStudy/SUPERPOSITION (feat. John Mayer) [LV_V4Rsd9eU].mp3",
     "songs/caseStudy/TOO DEEP TO TURN BACK [J5r3MDJGoaw].mp3"
 ];
+
+const mikuImgs = [
+    "thumbnails/mikuImgs/PoPiPo.jpg",
+    "thumbnails/mikuImgs/Cantarella.jpg",
+    "thumbnails/mikuImgs/magnet.jpg",
+    "thumbnails/mikuImgs/sweetDevil.jpg",
+    "thumbnails/mikuImgs/disappearance.jpg",
+    "thumbnails/mikuImgs/butterflyOnMyShoulder.jpg",
+    "thumbnails/mikuImgs/CloverClub.jpg",
+    "thumbnails/mikuImgs/weekender.jpg",
+    "thumbnails/mikuImgs/Romeo&Cinderella.jpg",
+    "thumbnails/mikuImgs/worldIsMine.jpg",
+    "thumbnails/mikuImgs/OneThousand.jpg",
+    "thumbnails/mikuImgs/aaaaaa.jpg",
+    "thumbnails/mikuImgs/SharingTheWorld.jpg",
+    "thumbnails/mikuImgs/GHPZ.jpg",
+    "thumbnails/mikuImgs/ievanPolka.jpg",
+    "thumbnails/mikuImgs/ProjectDiva2.jpg",
+    "thumbnails/mikuImgs/storyRider.jpg"
+]
+
+const caseImgs = ["thumbnails/caseStudyImgs/caseStudyImg.jpg"];
 
 song.onloadedmetadata = function () {
     progress.max = song.duration;
@@ -63,6 +85,7 @@ playDiv.addEventListener("click", () => {
 
 mikuIcon.addEventListener("click", () => {
     song.src = miku[0];
+    songImg.src = mikuImgs[0];
     song.load();
     song.play();
     ctrlIcon.classList.remove("fa-play");
@@ -71,6 +94,7 @@ mikuIcon.addEventListener("click", () => {
 
 caseIcon.addEventListener("click", () => {
     song.src = caseStudy[0];
+    songImg.src = caseImgs[0];
     song.load();
     song.play();
     ctrlIcon.classList.remove("fa-play");
@@ -92,10 +116,13 @@ forwardDiv.addEventListener("click", () => {
 
     const currentSrc = song.src;
     let currentFolder = decodeURIComponent(currentSrc.split("/")[10]);
+    let currentImgs;
     if (currentFolder === "miku") {
         currentFolder = miku;
+        currentImgs = mikuImgs;
     } else if (currentFolder === "caseStudy") {
         currentFolder = caseStudy;
+        currentImgs = caseImgs;
     }
     const currentFile = decodeURIComponent(currentSrc.split("/").pop());
 
@@ -109,6 +136,8 @@ forwardDiv.addEventListener("click", () => {
     }
 
     song.src = currentFolder[nextIndex];
+    if (currentImgs === caseImgs) {songImg.src = currentImgs[0];}
+    else {songImg.src = currentImgs[nextIndex];}
     song.load();
     song.play();
 
@@ -123,10 +152,13 @@ backwardDiv.addEventListener("click", () => {
 
     const currentSrc = song.src;
     let currentFolder = decodeURIComponent(currentSrc.split("/")[10]);
+    let currentImgs;
     if (currentFolder === "miku") {
         currentFolder = miku;
+        currentImgs = mikuImgs;
     } else if (currentFolder === "caseStudy") {
         currentFolder = caseStudy;
+        currentImgs = caseImgs;
     }
     const currentFile = decodeURIComponent(currentSrc.split("/").pop());
 
@@ -140,6 +172,8 @@ backwardDiv.addEventListener("click", () => {
     }
 
     song.src = currentFolder[nextIndex];
+    if (currentImgs === caseImgs) {songImg.src = currentImgs[0];} 
+    else {songImg.src = currentImgs[nextIndex];}
     song.load();
     song.play();
 
