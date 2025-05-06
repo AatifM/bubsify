@@ -123,7 +123,7 @@ forwardDiv.addEventListener("click", () => {
     }
 
     const currentSrc = song.src;
-    let currentFolder = decodeURIComponent(currentSrc.split("/")[10]);
+    let currentFolder = decodeURIComponent(currentSrc.split("/")[2]);
     console.log(currentFolder);
     let currentImgs;
     if (currentFolder === "miku") {
@@ -161,7 +161,7 @@ backwardDiv.addEventListener("click", () => {
     }
 
     const currentSrc = song.src;
-    let currentFolder = decodeURIComponent(currentSrc.split("/")[10]);
+    let currentFolder = decodeURIComponent(currentSrc.split("/")[2]);
     let currentImgs;
     if (currentFolder === "miku") {
         currentFolder = miku;
