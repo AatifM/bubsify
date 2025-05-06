@@ -1,4 +1,5 @@
 const progress = document.querySelector("#progress");
+const volume = document.querySelector("#volume");
 const song = document.querySelector("#song");
 const ctrlIcon = document.querySelector("#play-pause");
 const playDiv = document.querySelector("#play-pause-container");
@@ -110,6 +111,10 @@ song.addEventListener("timeupdate", () => {
 
 progress.addEventListener("input", () => {
     song.currentTime = progress.value;
+});
+
+volume.addEventListener("input", (e) => {
+    song.volume = volume.value;
 });
 
 forwardDiv.addEventListener("click", () => {
