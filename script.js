@@ -124,6 +124,7 @@ forwardDiv.addEventListener("click", () => {
 
     const currentSrc = song.src;
     let currentFolder = decodeURIComponent(currentSrc.split("/")[10]);
+    console.log(currentFolder);
     let currentImgs;
     if (currentFolder === "miku") {
         currentFolder = miku;
