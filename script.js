@@ -10,6 +10,7 @@ const backwardDiv = document.querySelector("#backward-container");
 const mikuIcon = document.querySelector("#mikuIcon");
 const caseIcon = document.querySelector("#caseIcon");
 const songImg = document.querySelector("#song-img");
+const songTitle = document.querySelector("#song-title");
 
 //This is gonna be really rough
 const miku = [
@@ -86,6 +87,7 @@ playDiv.addEventListener("click", () => {
 mikuIcon.addEventListener("click", () => {
     song.src = miku[0];
     songImg.src = mikuImgs[0];
+    songTitle.textContent = decodeURIComponent(song.src.split("/").pop());
     song.load();
     song.play();
     ctrlIcon.classList.remove("fa-play");
@@ -95,6 +97,7 @@ mikuIcon.addEventListener("click", () => {
 caseIcon.addEventListener("click", () => {
     song.src = caseStudy[0];
     songImg.src = caseImgs[0];
+    songTitle.textContent = decodeURIComponent(song.src.split("/").pop());
     song.load();
     song.play();
     ctrlIcon.classList.remove("fa-play");
@@ -136,6 +139,7 @@ forwardDiv.addEventListener("click", () => {
     }
 
     song.src = currentFolder[nextIndex];
+    songTitle.textContent = decodeURIComponent(song.src.split("/").pop());
     if (currentImgs === caseImgs) {songImg.src = currentImgs[0];}
     else {songImg.src = currentImgs[nextIndex];}
     song.load();
@@ -172,6 +176,7 @@ backwardDiv.addEventListener("click", () => {
     }
 
     song.src = currentFolder[nextIndex];
+    songTitle.textContent = decodeURIComponent(song.src.split("/").pop());
     if (currentImgs === caseImgs) {songImg.src = currentImgs[0];} 
     else {songImg.src = currentImgs[nextIndex];}
     song.load();
