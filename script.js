@@ -86,6 +86,10 @@ progress.addEventListener("input", () => {
 });
 
 forwardDiv.addEventListener("click", () => {
+    if (song.src === "songs/Love You ⧸ Capchii feat. 初音ミク [i1umA0qoLa4].mp3") {
+        return;
+    }
+
     const currentSrc = song.src;
     let currentFolder = decodeURIComponent(currentSrc.split("/")[10]);
     if (currentFolder === "miku") {
@@ -113,6 +117,10 @@ forwardDiv.addEventListener("click", () => {
 });
 
 backwardDiv.addEventListener("click", () => {
+    if (song.src === "songs/Love You ⧸ Capchii feat. 初音ミク [i1umA0qoLa4].mp3") {
+        return;
+    }
+
     const currentSrc = song.src;
     let currentFolder = decodeURIComponent(currentSrc.split("/")[10]);
     if (currentFolder === "miku") {
