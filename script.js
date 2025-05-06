@@ -7,6 +7,8 @@ const forwardBtn = document.querySelector("#forward");
 const forwardDiv = document.querySelector("#forward-container")
 const backwardBtn = document.querySelector("#backward");
 const backwardDiv = document.querySelector("#backward-container");
+const mikuIcon = document.querySelector("#mikuIcon");
+const caseIcon = document.querySelector("#caseIcon");
 
 //This is gonna be really rough
 const miku = [
@@ -59,6 +61,22 @@ playDiv.addEventListener("click", () => {
     }
 });
 
+mikuIcon.addEventListener("click", () => {
+    song.src = miku[0];
+    song.load();
+    song.play();
+    ctrlIcon.classList.remove("fa-play");
+    ctrlIcon.classList.add("fa-pause");
+});
+
+caseIcon.addEventListener("click", () => {
+    song.src = caseStudy[0];
+    song.load();
+    song.play();
+    ctrlIcon.classList.remove("fa-play");
+    ctrlIcon.classList.add("fa-pause");
+});
+
 song.addEventListener("timeupdate", () => {
     progress.value = song.currentTime;
 });
@@ -69,18 +87,24 @@ progress.addEventListener("input", () => {
 
 forwardDiv.addEventListener("click", () => {
     const currentSrc = song.src;
+    let currentFolder = decodeURIComponent(currentSrc.split("/")[10]);
+    if (currentFolder === "miku") {
+        currentFolder = miku;
+    } else if (currentFolder === "caseStudy") {
+        currentFolder = caseStudy;
+    }
     const currentFile = decodeURIComponent(currentSrc.split("/").pop());
 
-    const currentIndex = miku.findIndex(path => path.includes(currentFile));
+    const currentIndex = currentFolder.findIndex(path => path.includes(currentFile));
     let nextIndex;
 
     if (currentIndex === -1) {
         nextIndex = 0;
     } else {
-        nextIndex = (currentIndex + 1) % miku.length;
+        nextIndex = (currentIndex + 1) % currentFolder.length;
     }
 
-    song.src = miku[nextIndex];
+    song.src = currentFolder[nextIndex];
     song.load();
     song.play();
 
@@ -90,18 +114,24 @@ forwardDiv.addEventListener("click", () => {
 
 backwardDiv.addEventListener("click", () => {
     const currentSrc = song.src;
+    let currentFolder = decodeURIComponent(currentSrc.split("/")[10]);
+    if (currentFolder === "miku") {
+        currentFolder = miku;
+    } else if (currentFolder === "caseStudy") {
+        currentFolder = caseStudy;
+    }
     const currentFile = decodeURIComponent(currentSrc.split("/").pop());
 
-    const currentIndex = miku.findIndex(path => path.includes(currentFile));
+    const currentIndex = currentFolder.findIndex(path => path.includes(currentFile));
     let nextIndex;
 
     if (currentIndex === -1) {
         return
     } else {
-        nextIndex = (currentIndex - 1 + miku.length) % miku.length;
+        nextIndex = (currentIndex - 1 + currentFolder.length) % currentFolder.length;
     }
 
-    song.src = miku[nextIndex];
+    song.src = currentFolder[nextIndex];
     song.load();
     song.play();
 
