@@ -1,15 +1,21 @@
 const progress = document.querySelector("#progress");
 const volume = document.querySelector("#volume");
+
 const song = document.querySelector("#song");
+const source = song.querySelector("source");
+
 const ctrlIcon = document.querySelector("#play-pause");
 const playDiv = document.querySelector("#play-pause-container");
-const source = song.querySelector("source");
+
 const forwardBtn = document.querySelector("#forward");
-const forwardDiv = document.querySelector("#forward-container")
+const forwardDiv = document.querySelector("#forward-container");
 const backwardBtn = document.querySelector("#backward");
 const backwardDiv = document.querySelector("#backward-container");
+
 const songImg = document.querySelector("#song-img");
 const songTitle = document.querySelector("#song-title");
+
+const lofiIcon = document.querySelector("#lofi-icon");
 
 const lofiSongs = [
     "songs/lofi/01 - [no copyright music] 'In Dreamland ' background music.mp3",
@@ -49,7 +55,10 @@ const lofiThumbnails = [
     "songs/lofi/58 - [no copyright music] 'Lovely' lofi background music.webp",
     "songs/lofi/59 - [no copyright music] 'little break' lofi background music.webp",
     "songs/lofi/60 - Space Aquarium - Lofi Study & Relaxation Music for Deep Focus.webp"
-]
+];
+
+let currentFolder;
+let currentImgs;
 
 song.onloadedmetadata = function () {
     progress.max = song.duration;
@@ -68,24 +77,28 @@ playDiv.addEventListener("click", () => {
     }
 });
 
-.addEventListener("click", () => {
-    song.src = 
-    songImg.src = 
-    //songTitle.textContent = decodeURIComponent(song.src.split("/").pop());
+lofiIcon.addEventListener("click", () => {
+    song.src = lofiSongs[0];
+    songImg.src = lofiThumbnails[0];
+    songTitle.textContent = decodeURIComponent(song.src.split("/").pop());
     song.load();
     song.play();
     ctrlIcon.classList.remove("fa-play");
     ctrlIcon.classList.add("fa-pause");
+    currentFolder = lofiSongs;
+    currentImgs = lofiThumbnails;
 });
 
 .addEventListener("click", () => {
     song.src = 
     songImg.src = 
-    //songTitle.textContent = decodeURIComponent(song.src.split("/").pop());
+    songTitle.textContent = decodeURIComponent(song.src.split("/").pop());
     song.load();
     song.play();
     ctrlIcon.classList.remove("fa-play");
     ctrlIcon.classList.add("fa-pause");
+    currentFolder = ;
+    currentImgs = ;
 });
 
 song.addEventListener("timeupdate", () => {
@@ -102,18 +115,8 @@ volume.addEventListener("input", (e) => {
 
 forwardDiv.addEventListener("click", () => {
     const currentSrc = song.src;
-    console.log(currentSrc);
-    let currentFolder = decodeURIComponent(currentSrc.split("/")[10]);
-    let currentImgs;
-    if (currentFolder === "") {
-        currentFolder = 
-        currentImgs = 
-    } else if (currentFolder === "") {
-        currentFolder = 
-        currentImgs = 
-    }
+    console.log(decodeURIComponent(currentSrc));
     const currentFile = decodeURIComponent(currentSrc.split("/").pop());
-
     const currentIndex = currentFolder.findIndex(path => path.includes(currentFile));
     let nextIndex;
 
@@ -124,9 +127,9 @@ forwardDiv.addEventListener("click", () => {
     }
 
     song.src = currentFolder[nextIndex];
+    songImg.src = currentImgs[nextIndex]
     songTitle.textContent = decodeURIComponent(song.src.split("/").pop());
-    if (currentImgs === ) {songImg.src = currentImgs[0];}
-    else {songImg.src = currentImgs[nextIndex];}
+
     song.load();
     song.play();
 
@@ -136,17 +139,7 @@ forwardDiv.addEventListener("click", () => {
 
 backwardDiv.addEventListener("click", () => {
     const currentSrc = song.src;
-    let currentFolder = decodeURIComponent(currentSrc.split("/")[10]);
-    let currentImgs;
-    if (currentFolder === "") {
-        currentFolder = 
-        currentImgs = 
-    } else if (currentFolder === "") {
-        currentFolder = 
-        currentImgs = 
-    }
     const currentFile = decodeURIComponent(currentSrc.split("/").pop());
-
     const currentIndex = currentFolder.findIndex(path => path.includes(currentFile));
     let nextIndex;
 
@@ -157,9 +150,9 @@ backwardDiv.addEventListener("click", () => {
     }
 
     song.src = currentFolder[nextIndex];
+    songImg.src = currentImgs[nextIndex]
     songTitle.textContent = decodeURIComponent(song.src.split("/").pop());
-    if (currentImgs === ) {songImg.src = currentImgs[0];} 
-    else {songImg.src = currentImgs[nextIndex];}
+
     song.load();
     song.play();
 
