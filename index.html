@@ -25,20 +25,20 @@
                 </div>
             </div>
 
-            <img src="" id="song-img">
-            <h3 id="song-title"></h3>
+            <div class="info" style="display: none;">
+                <img src="" id="song-img">
+                <h3 id="song-title"></h3>
+            </div>
 
-            <audio id="song">
-                <source src="" type="audio/mpeg">
-            </audio>
+            <audio id="song"></audio>
 
-            <div class="controls">
+            <div class="controls" style="display: none;">
                 <div id="backward-container"><i class="fa-solid fa-backward-step" id="backward"></i></div>
                 <div id="play-pause-container"><i class="fa-solid fa-play" id="play-pause"></i></div>
                 <div id="forward-container"><i class="fa-solid fa-forward-step" id="forward"></i></div>
             </div>
 
-            <div class="sliders">
+            <div class="sliders" style="display: none;">
                 <input type="range" value="0" id="progress">
                 <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
             </div>

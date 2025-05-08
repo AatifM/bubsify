@@ -1,3 +1,4 @@
+const sliders = document.querySelector(".sliders");
 const progress = document.querySelector("#progress");
 const volume = document.querySelector("#volume");
 
@@ -7,11 +8,13 @@ const source = song.querySelector("source");
 const ctrlIcon = document.querySelector("#play-pause");
 const playDiv = document.querySelector("#play-pause-container");
 
+const controls = document.querySelector(".controls");
 const forwardBtn = document.querySelector("#forward");
 const forwardDiv = document.querySelector("#forward-container");
 const backwardBtn = document.querySelector("#backward");
 const backwardDiv = document.querySelector("#backward-container");
 
+const info = document.querySelector(".info");
 const songImg = document.querySelector("#song-img");
 const songTitle = document.querySelector("#song-title");
 
@@ -143,6 +146,9 @@ lofiIcon.addEventListener("click", () => {
     ctrlIcon.classList.add("fa-pause");
     currentFolder = lofiSongs;
     currentImgs = lofiThumbnails;
+    controls.style.display = "flex";
+    sliders.style.display = "flex";
+    info.style.display = "block";
 });
 
 cityPopIcon.addEventListener("click", () => {
@@ -155,6 +161,9 @@ cityPopIcon.addEventListener("click", () => {
     ctrlIcon.classList.add("fa-pause");
     currentFolder = cityPopSongs;
     currentImgs = cityPopThumbnails;
+    controls.style.display = "flex";
+    sliders.style.display = "flex";
+    info.style.display = "block";
 });
 
 classicalIcon.addEventListener("click", () => {
@@ -167,6 +176,9 @@ classicalIcon.addEventListener("click", () => {
     ctrlIcon.classList.add("fa-pause");
     currentFolder = classicalSongs;
     currentImgs = classicalThumbnails;
+    controls.style.display = "flex";
+    sliders.style.display = "flex";
+    info.style.display = "block";
 });
 
 song.addEventListener("timeupdate", () => {
@@ -183,7 +195,6 @@ volume.addEventListener("input", () => {
 
 forwardDiv.addEventListener("click", () => {
     const currentSrc = song.src;
-    console.log(decodeURIComponent(currentSrc));
     const currentFile = decodeURIComponent(currentSrc.split("/").pop());
     const currentIndex = currentFolder.findIndex(path => path.includes(currentFile));
     let nextIndex;
