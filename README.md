@@ -31,6 +31,17 @@ No backend or frameworks were used — just plain front-end web development.
 
 ---
 
+## 🎨 Design Notes
+
+The visual design follows dark mode guidelines loosely based on the [Material Design Dark Theme](https://m2.material.io/design/color/dark-theme.html) principles:
+
+- **Background** is set to `0dp` tone (near-black)
+- **Surface containers** use the `1dp` elevation tone to distinguish layers
+- **Primary color** is used at the `200` tone for clear, accessible accents
+- Contrast and clarity are prioritized for all interactive elements
+
+---
+
 ## 📈 Future Improvements
 
 - 🔁 **Autoplay**: Automatically play the next song when the current one finishes.
