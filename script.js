@@ -16,6 +16,8 @@ const songImg = document.querySelector("#song-img");
 const songTitle = document.querySelector("#song-title");
 
 const lofiIcon = document.querySelector("#lofi-icon");
+const cityPopIcon = document.querySelector("#citypop-icon");
+const classicalIcon = document.querySelector("#classical-icon");
 
 const lofiSongs = [
     "songs/lofi/01 - [no copyright music] 'In Dreamland ' background music.mp3",
@@ -57,6 +59,60 @@ const lofiThumbnails = [
     "songs/lofi/60 - Space Aquarium - Lofi Study & Relaxation Music for Deep Focus.webp"
 ];
 
+const cityPopSongs = [
+    "songs/citypop/＂ C R Y S T A L 宝 ＂ City Pop Beat Instrumental [Free].mp3",
+    "songs/citypop/(FREE) City Pop Type Beat - Stars In The  City.mp3",
+    "songs/citypop/[FREE BEAT] Kpop style House beat [DIVE INTO]  ⧸⧸ Prod by. Disko.mp3",
+    "songs/citypop/[FREE BEAT] Retro, City Pop [Retro City] Type Beat Prod. by Disko.mp3",
+    "songs/citypop/[No Copyright Music] retro city pop music _ Automatic Love.mp3",
+    "songs/citypop/[royalty free music] bedroom beats vol. 2 (bandlab).mp3",
+    "songs/citypop/[royalty free music] lo-fi hiphop (bandlab).mp3",
+    "songs/citypop/[royalty free music] retro city pop (bandlab).mp3",
+    "songs/citypop/[무료비트 Free Beat] City pop Beat ＂Lighting＂ - [LIGHTING instrumental].mp3",
+    "songs/citypop/[무료비트 Free Beat] 차분하고 몽환적인 알앤비 - Pandora.mp3",
+    "songs/citypop/Aries Beats - NU DISCO FUNK ｜ Funky 80s Slap Bass TalkBox Music (FORTNITE REMIX).mp3",
+    "songs/citypop/City Lights (No Copyright Music) - Make Studio.mp3",
+    "songs/citypop/Roller - POMO City Pop Type Beat ｜ Prod. Noden.mp3"
+];
+
+const cityPopThumbnails = [
+    "songs/citypop/＂ C R Y S T A L 宝 ＂ City Pop Beat Instrumental [Free].webp",
+    "songs/citypop/(FREE) City Pop Type Beat - Stars In The  City.webp",
+    "songs/citypop/[FREE BEAT] Kpop style House beat [DIVE INTO]  ⧸⧸ Prod by. Disko.webp",
+    "songs/citypop/[FREE BEAT] Retro, City Pop [Retro City] Type Beat Prod. by Disko.webp",
+    "songs/citypop/[No Copyright Music] retro city pop music _ Automatic Love.webp",
+    "songs/citypop/[royalty free music] bedroom beats vol. 2 (bandlab).webp",
+    "songs/citypop/[royalty free music] lo-fi hiphop (bandlab).webp",
+    "songs/citypop/[royalty free music] retro city pop (bandlab).webp",
+    "songs/citypop/[무료비트 Free Beat] City pop Beat ＂Lighting＂ - [LIGHTING instrumental].webp",
+    "songs/citypop/[무료비트 Free Beat] 차분하고 몽환적인 알앤비 - Pandora.webp",
+    "songs/citypop/Aries Beats - NU DISCO FUNK ｜ Funky 80s Slap Bass TalkBox Music (FORTNITE REMIX).webp",
+    "songs/citypop/City Lights (No Copyright Music) - Make Studio.webp",
+    "songs/citypop/Roller - POMO City Pop Type Beat ｜ Prod. Noden.webp"
+];
+
+const classicalSongs = [
+    "songs/classical/Also Sprach Zarathustra - Strauss [COPYRIGHT FREE].mp3",
+    "songs/classical/Blue Danube - Strauss [COPYRIGHT FREE].mp3",
+    "songs/classical/Cello Suite - Bach [COPYRIGHT FREE].mp3",
+    "songs/classical/Love Theme - Tchaikovsky [COPYRIGHT FREE].mp3",
+    "songs/classical/Ride of the Valkyries - Wagner [COPYRIGHT FREE].mp3",
+    "songs/classical/Russian Dance - Tchaikovsky Nutcracker Suite [COPYRIGHT FREE].mp3",
+    "songs/classical/The Flower Duet - Leo Delibes [COPYRIGHT FREE].mp3",
+    "songs/classical/Winter - Vivaldi [COPYRIGHT FREE].mp3"
+];
+
+const classicalThumbnails = [
+    "songs/classical/Also Sprach Zarathustra - Strauss [COPYRIGHT FREE].webp",
+    "songs/classical/Blue Danube - Strauss [COPYRIGHT FREE].webp",
+    "songs/classical/Cello Suite - Bach [COPYRIGHT FREE].webp",
+    "songs/classical/Love Theme - Tchaikovsky [COPYRIGHT FREE].webp",
+    "songs/classical/Ride of the Valkyries - Wagner [COPYRIGHT FREE].webp",
+    "songs/classical/Russian Dance - Tchaikovsky Nutcracker Suite [COPYRIGHT FREE].webp",
+    "songs/classical/The Flower Duet - Leo Delibes [COPYRIGHT FREE].webp",
+    "songs/classical/Winter - Vivaldi [COPYRIGHT FREE].webp"
+];
+
 let currentFolder;
 let currentImgs;
 
@@ -89,16 +145,28 @@ lofiIcon.addEventListener("click", () => {
     currentImgs = lofiThumbnails;
 });
 
-.addEventListener("click", () => {
-    song.src = 
-    songImg.src = 
+cityPopIcon.addEventListener("click", () => {
+    song.src = cityPopSongs[0];
+    songImg.src = cityPopThumbnails[0];
     songTitle.textContent = decodeURIComponent(song.src.split("/").pop());
     song.load();
     song.play();
     ctrlIcon.classList.remove("fa-play");
     ctrlIcon.classList.add("fa-pause");
-    currentFolder = ;
-    currentImgs = ;
+    currentFolder = cityPopSongs;
+    currentImgs = cityPopThumbnails;
+});
+
+classicalIcon.addEventListener("click", () => {
+    song.src = classicalSongs[0];
+    songImg.src = classicalThumbnails[0];
+    songTitle.textContent = decodeURIComponent(song.src.split("/").pop());
+    song.load();
+    song.play();
+    ctrlIcon.classList.remove("fa-play");
+    ctrlIcon.classList.add("fa-pause");
+    currentFolder = classicalSongs;
+    currentImgs = classicalThumbnails;
 });
 
 song.addEventListener("timeupdate", () => {
@@ -109,7 +177,7 @@ progress.addEventListener("input", () => {
     song.currentTime = progress.value;
 });
 
-volume.addEventListener("input", (e) => {
+volume.addEventListener("input", () => {
     song.volume = volume.value;
 });
 

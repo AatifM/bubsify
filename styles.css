@@ -89,3 +89,13 @@
     width: 100%;
     gap: 24px;
 }
+
+.media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #80DEEA;
+    gap: 8px;
+}
